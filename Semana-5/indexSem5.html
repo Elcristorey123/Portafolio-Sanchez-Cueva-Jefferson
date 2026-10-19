@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portal de turismo del Grupo 10 - Descubre los mejores destinos del Perú: Machu Picchu, Lago Titicaca, Líneas de Nazca y más."
+    />
+    <meta
+      name="keywords"
+      content="turismo, Perú, viajes, destinos, Machu Picchu, Titicaca, Nazca, agencia de viajes"
+    />
+    <meta name="author" content="Renzo Hinojosa - UNCP" />
+    <meta name="robots" content="index, follow" />
+    <title>Turismo Perú - Grupo 10</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <section id="destinos" class="section-destinos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Destinos destacados</span>
+          <h2 class="section-title">Los lugares que te <em>enamorarán</em></h2>
+          <p class="section-subtitle">
+            Seleccionados por nuestros viajeros como los imperdibles del Perú
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-12 col-md-6 col-lg-4">
+            <article
+              class="destino-card rounded-xl shadow-lg transition-transform hover:scale-105"
+            >
+              <div class="destino-img">
+                <img
+                  src="img/machu-picchu.jpg"
+                  class="rounded-xl"
+                  alt="Machu Picchu, maravilla del mundo en Cusco"
+                />
+                <span class="destino-badge">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2c-3 4-6 7-6 11a6 6 0 1 0 12 0c0-4-3-7-6-11z"
+                    />
+                  </svg>
+                  Más vendido
+                </span>
+                <button class="destino-fav" aria-label="Guardar en favoritos">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="destino-body">
+                <div class="destino-meta">
+                  <span class="destino-location">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                      />
+                    </svg>
+                    Cusco, Perú
+                  </span>
+                  <span class="destino-rating">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"
+                      />
+                    </svg>
+                    4.9 <span>(2,340)</span>
+                  </span>
+                </div>
+                <h3 class="destino-title">Machu Picchu Mágico</h3>
+                <p class="destino-desc">
+                  3 días / 2 noches · Transporte, hotel y guía incluidos
+                </p>
+                <div class="destino-footer">
+                  <div class="destino-price">
+                    <span class="price-desde">Desde</span>
+                    <span class="price-valor">S/ 890</span>
+                    <span class="price-persona">/persona</span>
+                  </div>
+                  <a
+                    href="#reserva"
+                    class="btn btn-destino"
+                    aria-label="Reservar Machu Picchu Mágico"
+                    >Reservar</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <article
+              class="destino-card rounded-xl shadow-lg transition-transform hover:scale-105"
+            >
+              <div class="destino-img">
+                <img
+                  src="img/lago-titicaca.jpg"
+                  class="rounded-xl"
+                  alt="Lago Titicaca, el lago navegable más alto del mundo"
+                />
+                <span class="destino-badge badge-new">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2zm6 12l.75 2.25L21 17l-2.25.75L18 20l-.75-2.25L15 17l2.25-.75L18 14zM6 14l.75 2.25L9 17l-2.25.75L6 20l-.75-2.25L3 17l2.25-.75L6 14z"
+                    />
+                  </svg>
+                  Nuevo
+                </span>
+                <button class="destino-fav" aria-label="Guardar en favoritos">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="destino-body">
+                <div class="destino-meta">
+                  <span class="destino-location">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                      />
+                    </svg>
+                    Puno, Perú
+                  </span>
+                  <span class="destino-rating">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"
+                      />
+                    </svg>
+                    4.8 <span>(1,870)</span>
+                  </span>
+                </div>
+                <h3 class="destino-title">Lago Titicaca & Uros</h3>
+                <p class="destino-desc">
+                  2 días / 1 noche · Visita a islas flotantes y Taquile
+                </p>
+                <div class="destino-footer">
+                  <div class="destino-price">
+                    <span class="price-desde">Desde</span>
+                    <span class="price-valor">S/ 620</span>
+                    <span class="price-persona">/persona</span>
+                  </div>
+                  <a
+                    href="#reserva"
+                    class="btn btn-destino"
+                    aria-label="Reservar Lago Titicaca & Uros"
+                    >Reservar</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-12 col-md-6 col-lg-4">
+            <article
+              class="destino-card rounded-xl shadow-lg transition-transform hover:scale-105"
+            >
+              <div class="destino-img">
+                <img
+                  src="img/nazca.jpg"
+                  class="rounded-xl"
+                  alt="Líneas de Nazca, geoglifos en el desierto de Ica"
+                />
+                <span class="destino-badge badge-oferta">-20% OFF</span>
+                <button class="destino-fav" aria-label="Guardar en favoritos">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <div class="destino-body">
+                <div class="destino-meta">
+                  <span class="destino-location">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
+                      />
+                    </svg>
+                    Ica, Perú
+                  </span>
+                  <span class="destino-rating">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 6.91-1.01L12 2z"
+                      />
+                    </svg>
+                    4.7 <span>(1,205)</span>
+                  </span>
+                </div>
+                <h3 class="destino-title">Sobrevuelo Nazca</h3>
+                <p class="destino-desc">
+                  Full day · Sobrevuelo en avioneta + Huacachina
+                </p>
+                <div class="destino-footer">
+                  <div class="destino-price">
+                    <span class="price-desde">Desde</span>
+                    <span class="price-valor">S/ 540</span>
+                    <span class="price-persona">/persona</span>
+                  </div>
+                  <a
+                    href="#reserva"
+                    class="btn btn-destino"
+                    aria-label="Reservar Sobrevuelo Nazca"
+                    >Reservar</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reserva" class="section-reserva">
+      <div class="container">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-5">
+            <span class="section-tag">Reserva tu viaje</span>
+            <h2 class="section-title text-start">
+              Comienza tu próxima <em>aventura</em>
+            </h2>
+            <p class="section-subtitle text-start mb-4">
+              Completa el formulario y uno de nuestros asesores te contactará en
+              menos de 24 horas.
+            </p>
+
+            <div class="ventajas">
+              <div class="ventaja">
+                <div class="ventaja-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="3"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Cancelación gratis</strong>
+                  <p>Hasta 48 horas antes del viaje</p>
+                </div>
+              </div>
+              <div class="ventaja">
+                <div class="ventaja-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polyline points="9 12 11 14 15 10" />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Pago seguro</strong>
+                  <p>Tarjeta, transferencia o efectivo</p>
+                </div>
+              </div>
+              <div class="ventaja">
+                <div class="ventaja-icon">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
+                    <path
+                      d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3v5zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3v5z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <strong>Soporte 24/7</strong>
+                  <p>Durante todo tu viaje</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <form class="form-reserva needs-validation" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre completo</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre"
+                    name="nombre"
+                    placeholder="Ej: Renzo Hinojosa"
+                    required
+                    aria-describedby="nombreError"
+                  />
+                  <div id="nombreError" class="invalid-feedback">
+                    Por favor ingresa tu nombre.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email" class="form-label"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="usuario@correo.com"
+                    required
+                    aria-describedby="emailError"
+                  />
+                  <div id="emailError" class="invalid-feedback">
+                    Ingresa un correo válido.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="telefono" class="form-label">Teléfono</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="telefono"
+                    name="telefono"
+                    pattern="[0-9]{9}"
+                    placeholder="987654321"
+                    required
+                    aria-describedby="telefonoError"
+                  />
+                  <div id="telefonoError" class="invalid-feedback">
+                    Ingresa 9 dígitos.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="destino" class="form-label"
+                    >Destino de interés</label
+                  >
+                  <select
+                    class="form-select"
+                    id="destino"
+                    name="destino"
+                    required
+                    aria-describedby="destinoError"
+                  >
+                    <option value="">Selecciona un destino...</option>
+                    <option value="machu">Machu Picchu</option>
+                    <option value="titicaca">Lago Titicaca</option>
+                    <option value="nazca">Líneas de Nazca</option>
+                  </select>
+                  <div id="destinoError" class="invalid-feedback">
+                    Selecciona un destino.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="fecha" class="form-label">Fecha de viaje</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="fecha"
+                    name="fecha"
+                    required
+                    aria-describedby="fechaError"
+                  />
+                  <div id="fechaError" class="invalid-feedback">
+                    Elige una fecha válida.
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="personas" class="form-label"
+                    >N° de personas</label
+                  >
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="personas"
+                    name="personas"
+                    min="1"
+                    max="20"
+                    placeholder="2"
+                    required
+                    aria-describedby="personasError"
+                  />
+                  <div id="personasError" class="invalid-feedback">
+                    Ingresa entre 1 y 20 personas.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <label for="mensaje" class="form-label"
+                    >Mensaje adicional</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="mensaje"
+                    name="mensaje"
+                    rows="3"
+                    placeholder="Cuéntanos qué necesitas..."
+                    required
+                    aria-describedby="mensajeError"
+                  ></textarea>
+                  <div id="mensajeError" class="invalid-feedback">
+                    Escribe tu mensaje.
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="terminos"
+                      name="terminos"
+                      required
+                      aria-describedby="terminosError"
+                    />
+                    <label class="form-check-label" for="terminos"
+                      >Acepto los términos y condiciones y la política de
+                      privacidad</label
+                    >
+                    <div id="terminosError" class="invalid-feedback">
+                      Debes aceptar los términos.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12">
+                  <button class="btn btn-reservar w-100" type="submit">
+                    Solicitar información
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      aria-hidden="true"
+                    >
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                      <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div
+      class="toast-exito"
+      id="toastExito"
+      role="alert"
+      aria-live="polite"
+      aria-atomic="true"
+    >
+      <div class="toast-icono">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+      </div>
+      <div class="toast-contenido">
+        <strong class="toast-titulo">¡Reserva enviada!</strong>
+        <span class="toast-mensaje"
+          >Nos pondremos en contacto contigo muy pronto.</span
+        >
+      </div>
+      <button
+        class="toast-cerrar"
+        type="button"
+        aria-label="Cerrar notificación"
+        onclick="
+          document.getElementById('toastExito').classList.remove('mostrar')
+        "
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

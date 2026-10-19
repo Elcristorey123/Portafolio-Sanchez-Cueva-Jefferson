@@ -1,0 +1,213 @@
+/* ============================================================
+   VARIABLES GLOBALES · VAR CENTER
+   ------------------------------------------------------------
+   Requisito de la guía:
+   "Evitar style inline. Usar classList.toggle() y variables
+   CSS para rendimiento"
+
+   Aquí centralizamos TODOS los tokens de diseño.
+   ============================================================ */
+
+:root {
+  /* ---------------------------------------------------------
+       1. PALETA PRINCIPAL · CÉSPED Y CAMPO
+       --------------------------------------------------------- */
+  --pitch-dark: #0a3d1f; /* verde profundo (fondo cancha) */
+  --pitch: #0d5c2a; /* verde césped */
+  --pitch-light: #16873f; /* verde claro (líneas) */
+  --pitch-bright: #1fa855; /* verde brillante (acento) */
+  --pitch-glow: #2ecc71; /* verde resaltado (éxito) */
+
+  /* ---------------------------------------------------------
+       2. PALETA VAR · MONITOR / SALA DE CONTROL
+       --------------------------------------------------------- */
+  --var-black: #05070b; /* fondo sala VAR */
+  --var-dark: #0b0f16; /* superficie oscura */
+  --var-panel: #111826; /* panel principal */
+  --var-panel-soft: #1a2233; /* panel secundario */
+  --var-border: #243044; /* bordes suaves */
+  --var-border-soft: rgba(255, 255, 255, 0.08);
+
+  /* ---------------------------------------------------------
+       3. ACENTOS DEPORTIVOS
+       --------------------------------------------------------- */
+  --accent-gold: #ffd700; /* amarillo tarjeta / acento principal */
+  --accent-gold-dark: #ffb700; /* amarillo oscuro (hover) */
+  --accent-red: #e63946; /* rojo VAR / tarjeta roja */
+  --accent-red-dark: #c1121f; /* rojo oscuro */
+  --accent-blue: #3498db; /* azul monitor */
+  --accent-blue-dark: #2980b9; /* azul oscuro */
+  --accent-orange: #f39c12; /* naranja advertencia */
+  --accent-purple: #9b59b6; /* púrpura (LED cámara) */
+  --accent-cyan: #00d4ff; /* cian tecnológico */
+  --accent-green: #2ecc71; /* verde éxito */
+
+  /* ---------------------------------------------------------
+       4. TEXTO
+       --------------------------------------------------------- */
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  --text-dim: #6b7280;
+  --text-dark: #111827;
+
+  /* ---------------------------------------------------------
+       5. TIPOGRAFÍAS
+       --------------------------------------------------------- */
+  --font-display: "Impact", "Arial Black", "Helvetica", sans-serif;
+  --font-body: "Segoe UI", system-ui, -apple-system, "Roboto", sans-serif;
+  --font-mono: "Consolas", "Monaco", "Courier New", monospace;
+
+  /* ---------------------------------------------------------
+       6. TAMAÑOS DE FUENTE (escala modular ~1.2)
+       --------------------------------------------------------- */
+  --fs-2xs: 0.65rem;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.375rem;
+  --fs-xl: 1.75rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+
+  /* ---------------------------------------------------------
+       7. ESPACIADO (sistema de 4px)
+       --------------------------------------------------------- */
+  --space-2xs: 0.125rem;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* ---------------------------------------------------------
+       8. RADIOS
+       --------------------------------------------------------- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
+  --radius-full: 9999px;
+
+  /* ---------------------------------------------------------
+       9. SOMBRAS
+       --------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.6);
+
+  --shadow-glow-green: 0 0 24px rgba(46, 204, 113, 0.45);
+  --shadow-glow-gold: 0 0 24px rgba(255, 215, 0, 0.45);
+  --shadow-glow-red: 0 0 24px rgba(230, 57, 70, 0.45);
+  --shadow-glow-blue: 0 0 24px rgba(52, 152, 219, 0.45);
+  --shadow-glow-cyan: 0 0 24px rgba(0, 212, 255, 0.45);
+
+  /* ---------------------------------------------------------
+       10. TRANSICIONES
+       --------------------------------------------------------- */
+  --t-fast: 0.15s ease;
+  --t-base: 0.28s ease;
+  --t-slow: 0.5s ease;
+  --t-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---------------------------------------------------------
+       11. Z-INDEX (escala consistente)
+       --------------------------------------------------------- */
+  --z-back: -1;
+  --z-base: 1;
+  --z-card: 10;
+  --z-sidebar: 50;
+  --z-header: 60;
+  --z-overlay: 100;
+  --z-modal: 200;
+  --z-toast: 300;
+
+  /* ---------------------------------------------------------
+       12. LAYOUT
+       --------------------------------------------------------- */
+  --header-height: 72px;
+  --sidebar-width: 280px;
+  --sidebar-width-md: 240px;
+  --content-max-width: 1400px;
+
+  /* ---------------------------------------------------------
+       13. GRADIENTES REUTILIZABLES
+       --------------------------------------------------------- */
+  --grad-pitch: linear-gradient(
+    135deg,
+    var(--pitch) 0%,
+    var(--pitch-dark) 100%
+  );
+  --grad-var: linear-gradient(
+    135deg,
+    var(--var-panel) 0%,
+    var(--var-dark) 100%
+  );
+  --grad-gold: linear-gradient(
+    135deg,
+    var(--accent-gold) 0%,
+    var(--accent-gold-dark) 100%
+  );
+  --grad-red: linear-gradient(
+    135deg,
+    var(--accent-red) 0%,
+    var(--accent-red-dark) 100%
+  );
+  --grad-blue: linear-gradient(
+    135deg,
+    var(--accent-blue) 0%,
+    var(--accent-blue-dark) 100%
+  );
+  --grad-green: linear-gradient(
+    135deg,
+    var(--accent-green) 0%,
+    var(--pitch-light) 100%
+  );
+  --grad-header: linear-gradient(
+    135deg,
+    var(--var-black) 0%,
+    var(--var-panel) 50%,
+    var(--pitch-dark) 100%
+  );
+
+  /* ---------------------------------------------------------
+       14. EFECTOS DE CÉSPED (reutilizables)
+       --------------------------------------------------------- */
+  --stripes-pitch: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 60px,
+    rgba(31, 168, 85, 0.04) 60px,
+    rgba(31, 168, 85, 0.04) 120px
+  );
+
+  --scanlines-var: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15) 0px,
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* ============================================================
+   PREFERENCIAS DEL USUARIO
+   ------------------------------------------------------------
+   Si el usuario prefiere menos movimiento, reducimos
+   animaciones y transiciones a casi cero.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0.01ms;
+    --t-base: 0.01ms;
+    --t-slow: 0.01ms;
+    --t-bounce: 0.01ms;
+  }
+}

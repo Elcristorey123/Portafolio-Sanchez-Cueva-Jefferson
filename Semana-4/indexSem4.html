@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Demo interactiva - Desarrollo de Aplicaciones Web IS093A - Semana 04"
+    />
+    <title>⚽ Fútbol DOM | Semana 04 - IS093A</title>
+
+    <!-- Hojas de estilo -->
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Carga diferida del JS principal -->
+    <!-- Orquestador principal -->
+    <script src="js/app.js" defer></script>
+
+    <!-- Módulos de cada paso (se auto-registran en window.__modules) -->
+    <script src="js/modules/paso1-canvas.js" defer></script>
+    <script src="js/modules/paso2-closures.js" defer></script>
+    <script src="js/modules/paso3-dom.js" defer></script>
+    <script src="js/modules/paso4-clicks.js" defer></script>
+    <script src="js/modules/paso5-performance.js" defer></script>
+  </head>
+  <body>
+    <!-- ============================================
+         HEADER: Marcador de Estadio
+         ============================================ -->
+    <header class="stadium-header">
+      <div class="header-content">
+        <div class="logo-area">
+          <span class="ball-icon">⚽</span>
+          <div class="title-block">
+            <h1>Fútbol <span class="accent">DOM</span></h1>
+            <p class="subtitle">
+              Desarrollo de Aplicaciones Web · IS093A · Semana 04
+            </p>
+          </div>
+        </div>
+
+        <div class="match-scoreboard">
+          <div class="team">
+            <span class="team-name">VANILLA</span>
+            <span class="team-score" id="scoreLocal">0</span>
+          </div>
+          <div class="vs">VS</div>
+          <div class="team">
+            <span class="team-name">FRAMEWORKS</span>
+            <span class="team-score" id="scoreVisitante">0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de estado en vivo -->
+      <div class="live-bar">
+        <span class="live-dot"></span>
+        <span class="live-text">EN VIVO</span>
+        <span class="live-separator">|</span>
+        <span class="live-info"
+          >JavaScript · TypeScript · DOM · Canvas · Closures</span
+        >
+      </div>
+    </header>
+
+    <!-- ============================================
+         NAVEGACIÓN DE PASOS (Pestañas)
+         ============================================ -->
+    <nav class="steps-nav" aria-label="Navegación de pasos">
+      <button class="step-tab active" data-step="1" aria-selected="true">
+        <span class="step-number">1</span>
+        <span class="step-label">Setup Canvas</span>
+      </button>
+      <button class="step-tab" data-step="2" aria-selected="false">
+        <span class="step-number">2</span>
+        <span class="step-label">Closures</span>
+      </button>
+      <button class="step-tab" data-step="3" aria-selected="false">
+        <span class="step-number">3</span>
+        <span class="step-label">DOM</span>
+      </button>
+      <button class="step-tab" data-step="4" aria-selected="false">
+        <span class="step-number">4</span>
+        <span class="step-label">Contador</span>
+      </button>
+      <button class="step-tab" data-step="5" aria-selected="false">
+        <span class="step-number">5</span>
+        <span class="step-label">Performance</span>
+      </button>
+    </nav>
+
+    <!-- ============================================
+         LAYOUT PRINCIPAL: Demo (izq) + Código (der)
+         ============================================ -->
+    <main class="main-layout">
+      <!-- ========== COLUMNA IZQUIERDA: DEMO ========== -->
+      <section class="demo-panel" aria-live="polite">
+        <!-- PASO 1: Setup HTML + Canvas -->
+        <article class="step-content active" data-step-content="1">
+          <header class="step-header">
+            <h2>
+              <span class="step-badge">1</span> Setup HTML + UI con Canvas y
+              Controles
+            </h2>
+            <p class="step-description">
+              Estructura base con controles interactivos y elemento
+              <code>&lt;canvas&gt;</code>. Integración JS con atributo
+              <code>defer</code>.
+            </p>
+            <span class="step-status active">✓ Paso 1 Activo</span>
+          </header>
+
+          <div class="step-body">
+            <!-- Controles -->
+            <div class="controls-bar">
+              <button id="btnPlay" class="btn btn-primary">▶ Play</button>
+              <button id="btnPause" class="btn btn-danger">⏸ Pause</button>
+              <button id="btnReset" class="btn btn-success">↺ Reset</button>
+
+              <input
+                type="text"
+                id="playerInput"
+                class="text-input"
+                placeholder="Nombre del jugador"
+                value="MESSI"
+                maxlength="15"
+              />
+
+              <label class="slider-group">
+                <span>Velocidad: <strong id="speedValue">5</strong></span>
+                <input
+                  type="range"
+                  id="speedSlider"
+                  min="1"
+                  max="10"
+                  value="5"
+                />
+              </label>
+            </div>
+
+            <!-- Canvas -->
+            <div class="canvas-wrapper">
+              <canvas id="demoCanvas" width="800" height="400">
+                Tu navegador no soporta Canvas API.
+              </canvas>
+            </div>
+          </div>
+        </article>
+
+        <!-- PASO 2: Closures -->
+        <article class="step-content" data-step-content="2">
+          <header class="step-header">
+            <h2>
+              <span class="step-badge">2</span> IIFE + Closures + Arrow
+              Functions
+            </h2>
+            <p class="step-description">
+              Aislamiento de scope con IIFE, estado encapsulado con closures y
+              handlers con arrow functions.
+            </p>
+            <span class="step-status">✓ Paso 2 Activo</span>
+          </header>
+
+          <div class="step-body">
+            <div class="closure-panel">
+              <h3>Estado del closure (marcador del partido):</h3>
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <span class="stat-value" id="framesCount">0</span>
+                  <span class="stat-label">Frames</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-value" id="clicksCount">0</span>
+                  <span class="stat-label">Toques</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-value" id="lastAction">—</span>
+                  <span class="stat-label">Última acción</span>
+                </div>
+              </div>
+              <button id="btnIncrement" class="btn btn-primary">
+                ⚽ Incrementar contador (closure)
+              </button>
+              <p class="hint">
+                💡 El closure retiene el estado entre invocaciones sin variables
+                globales.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- PASO 3: DOM -->
+        <article class="step-content" data-step-content="3">
+          <header class="step-header">
+            <h2>
+              <span class="step-badge">3</span> Manipulación DOM + Validación
+            </h2>
+            <p class="step-description">
+              <code>querySelector</code>, <code>addEventListener</code>,
+              <code>classList.toggle()</code> y validación de inputs.
+            </p>
+            <span class="step-status">✓ Paso 3 Activo</span>
+          </header>
+
+          <div class="step-body">
+            <div class="dom-demo-area">
+              <div id="playerCard" class="player-card">
+                <span class="card-icon">🏃</span>
+                <span class="card-text">Jugador Demo</span>
+              </div>
+
+              <div class="button-group">
+                <button id="btnToggleHighlight" class="btn btn-primary">
+                  Toggle Highlight
+                </button>
+                <button id="btnAddPulse" class="btn btn-success">
+                  Añadir Pulse
+                </button>
+                <button id="btnResetCard" class="btn btn-danger">Reset</button>
+              </div>
+            </div>
+
+            <div class="validation-area">
+              <label for="emailInput">Validación de email del hincha:</label>
+              <input
+                type="email"
+                id="emailInput"
+                class="text-input full-width"
+                placeholder="test@correo.com"
+              />
+              <span id="emailFeedback" class="feedback"></span>
+            </div>
+          </div>
+        </article>
+
+        <!-- PASO 4: Contador incremental -->
+        <article class="step-content" data-step-content="4">
+          <header class="step-header">
+            <h2>
+              <span class="step-badge">4</span> Contador Incremental de Eventos
+            </h2>
+            <p class="step-description">
+              Sumas incrementales de clicks/pases registrados en el partido.
+            </p>
+            <span class="step-status">✓ Paso 4 Activo</span>
+          </header>
+
+          <div class="step-body">
+            <div class="click-arena" id="clickArena">
+              <p class="arena-instruction">
+                Haz clic en cualquier parte de esta área ⚽
+              </p>
+              <div class="arena-counter">
+                <span class="counter-number" id="globalClickCount">0</span>
+                <span class="counter-label">pases registrados</span>
+              </div>
+            </div>
+
+            <div class="click-history">
+              <h3>Historial de últimas jugadas</h3>
+              <ul id="clickHistoryList" class="history-list">
+                <li class="history-empty">Sin jugadas registradas</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- PASO 5: Performance -->
+        <article class="step-content" data-step-content="5">
+          <header class="step-header">
+            <h2>
+              <span class="step-badge">5</span> Depuración y Optimización (VAR)
+            </h2>
+            <p class="step-description">
+              Monitor de rendimiento en vivo · FPS, memoria, listeners y
+              detección de leaks.
+            </p>
+            <span class="step-status">✓ Paso 5 Activo</span>
+          </header>
+
+          <div class="step-body">
+            <div class="performance-monitor">
+              <div class="monitor-header">
+                <h3>📊 Monitor de Rendimiento en Vivo</h3>
+                <span class="health-badge" id="healthBadge">● SALUDABLE</span>
+              </div>
+
+              <div class="metrics-grid">
+                <div class="metric-card">
+                  <span class="metric-value" id="fpsCurrent">0</span>
+                  <span class="metric-label">FPS Actual</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value" id="memoryUsed">0</span>
+                  <span class="metric-label">Memoria (MB)</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value" id="listenersActive">0</span>
+                  <span class="metric-label">Listeners Activos</span>
+                </div>
+                <div class="metric-card">
+                  <span class="metric-value" id="possibleLeaks">0</span>
+                  <span class="metric-label">Posibles Leaks</span>
+                </div>
+              </div>
+
+              <div class="fps-chart-container">
+                <h4>Historial de FPS (últimos 60 segundos)</h4>
+                <canvas id="fpsChart" width="700" height="120"></canvas>
+              </div>
+
+              <div class="memory-bar-container">
+                <span class="bar-label">Uso de Memoria Heap</span>
+                <div class="progress-bar">
+                  <div
+                    class="progress-fill"
+                    id="memoryBar"
+                    style="width: 0%"
+                  ></div>
+                </div>
+                <span class="bar-percentage" id="memoryPercent">0%</span>
+              </div>
+
+              <div class="monitor-actions">
+                <button id="btnAnalyze" class="btn btn-primary">
+                  🔍 Analizar Rendimiento
+                </button>
+                <button id="btnSimulateLeak" class="btn btn-warning">
+                  ⚠ Simular Memory Leak
+                </button>
+                <button id="btnCleanMemory" class="btn btn-success">
+                  🧹 Limpiar Memoria
+                </button>
+              </div>
+
+              <div class="monitor-console" id="monitorConsole">
+                <p class="console-line">> Sistema de monitoreo iniciado...</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <!-- ========== COLUMNA DERECHA: CÓDIGO EN VIVO ========== -->
+      <aside class="code-panel" aria-label="Panel de código en vivo">
+        <header class="code-header">
+          <h3>💻 Código en Vivo</h3>
+          <span class="active-badge" id="activeCodeBadge">Paso 1 activo</span>
+        </header>
+
+        <div class="code-file-tabs">
+          <span class="file-tab active" id="fileTabName">app.js</span>
+        </div>
+
+        <pre
+          class="code-block"
+        ><code id="codeDisplay" class="language-javascript">// El código del paso activo se mostrará aquí
+// Selecciona un paso en la navegación superior</code></pre>
+      </aside>
+    </main>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="stadium-footer">
+      <div class="footer-content">
+        <p>
+          <strong>Desarrollo de Aplicaciones Web (IS093A)</strong> · Unidad I:
+          Desarrollo Web Frontend
+        </p>
+        <p class="footer-sub">
+          Vanilla JS/TS únicamente · Sin frameworks · 70% código manual · IA
+          solo para consultas
+        </p>
+        <div class="footer-links">
+          <a
+            href="https://developer.mozilla.org/es/docs/Web/API/Canvas_API"
+            target="_blank"
+            rel="noopener"
+            >MDN Canvas</a
+          >
+          <a
+            href="https://developer.mozilla.org/es/docs/Web/API/window/requestAnimationFrame"
+            target="_blank"
+            rel="noopener"
+            >requestAnimationFrame</a
+          >
+          <a
+            href="https://developer.mozilla.org/es/docs/Web/API/Document_Object_Model"
+            target="_blank"
+            rel="noopener"
+            >DOM API</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

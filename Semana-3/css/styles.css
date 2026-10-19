@@ -1,0 +1,1094 @@
+/* =========================================================
+   FÚTBOL LEGENDS ARCHIVE — styles.css (PRO + Layout Lateral)
+   Bootstrap 5 + Tailwind (prefijo tw-)
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   1. VARIABLES GLOBALES
+   --------------------------------------------------------- */
+:root {
+  --fla-bg-900: #050816;
+  --fla-bg-800: #0b1020;
+  --fla-primary: #6366f1;
+  --fla-primary-dark: #4f46e5;
+  --fla-accent: #ec4899;
+  --fla-accent-2: #06b6d4;
+  --fla-gold: #fbbf24;
+  --fla-text: #e5e7eb;
+  --fla-text-muted: #94a3b8;
+  --fla-border: rgba(148, 163, 184, 0.15);
+  --fla-transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --fla-shadow-glow: 0 0 40px rgba(99, 102, 241, 0.35);
+  --fla-success: #10b981;
+}
+
+/* ---------------------------------------------------------
+   2. BASE / RESET
+   --------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: var(--fla-text);
+  background: radial-gradient(
+    ellipse at top,
+    #0f172a 0%,
+    var(--fla-bg-900) 70%
+  );
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+}
+
+code {
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.82em;
+  color: var(--fla-accent-2);
+  background: rgba(6, 182, 212, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.font-display {
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+/* ---------------------------------------------------------
+   3. FONDO: CANVAS + ORBES
+   --------------------------------------------------------- */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.bg-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.35;
+  z-index: 1;
+  pointer-events: none;
+  animation: floatOrb 18s ease-in-out infinite;
+}
+
+.bg-orb-1 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, #6366f1, transparent 70%);
+  top: -100px;
+  left: -120px;
+}
+.bg-orb-2 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #ec4899, transparent 70%);
+  bottom: -80px;
+  right: -100px;
+  animation-delay: -6s;
+}
+.bg-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, #06b6d4, transparent 70%);
+  top: 40%;
+  left: 50%;
+  animation-delay: -12s;
+}
+
+@keyframes floatOrb {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(60px, -40px) scale(1.1);
+  }
+  66% {
+    transform: translate(-50px, 50px) scale(0.95);
+  }
+}
+
+/* ---------------------------------------------------------
+   4. TOP BAR (tipo "UNCP Web Dev")
+   --------------------------------------------------------- */
+.top-bar {
+  position: relative;
+  z-index: 5;
+  background: rgba(5, 8, 22, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--fla-border);
+  padding: 0.9rem 1.5rem;
+}
+
+.top-bar-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.top-bar-logo {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+/* ---------------------------------------------------------
+   5. LAYOUT DE 2 COLUMNAS (contenido + control)
+   --------------------------------------------------------- */
+.layout {
+  position: relative;
+  z-index: 2;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 6rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* En pantallas medianas el control baja arriba */
+@media (max-width: 992px) {
+  .layout {
+    grid-template-columns: 1fr;
+    padding: 1.25rem 1rem 7rem;
+  }
+  .control-col {
+    order: -1; /* el panel de control aparece primero en móvil */
+  }
+}
+
+/* ---------------------------------------------------------
+   6. COLUMNA IZQUIERDA — Contenido acumulable
+   --------------------------------------------------------- */
+.content-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Banner institucional */
+.inst-banner {
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.15),
+    rgba(236, 72, 153, 0.1)
+  );
+  border: 1px solid var(--fla-border);
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  backdrop-filter: blur(12px);
+  text-align: center;
+}
+
+.inst-banner h1 {
+  font-size: clamp(0.95rem, 1.6vw, 1.15rem);
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.35rem;
+  line-height: 1.35;
+}
+
+.inst-banner p {
+  margin: 0;
+  color: var(--fla-text-muted);
+  font-size: 0.85rem;
+}
+
+/* Empty state */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  border: 2px dashed var(--fla-border);
+  border-radius: 1rem;
+  color: var(--fla-text-muted);
+  font-size: 0.9rem;
+}
+.empty-state.hidden {
+  display: none;
+}
+
+/* ---------------------------------------------------------
+   7. PANELES ACUMULABLES (cada paso es una "tarjeta")
+   --------------------------------------------------------- */
+.panel-panel {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--fla-border);
+  border-radius: 1.25rem;
+  padding: 1.75rem 1.75rem 2rem;
+  box-shadow:
+    0 20px 60px -30px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  animation: panelEnter 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
+  position: relative;
+}
+
+@keyframes panelEnter {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.panel-panel.removing {
+  animation: panelExit 0.35s ease forwards;
+}
+
+@keyframes panelExit {
+  to {
+    opacity: 0;
+    transform: translateY(-15px) scale(0.97);
+  }
+}
+
+.panel-header {
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed var(--fla-border);
+}
+
+.panel-tag {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--fla-accent-2);
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+.panel-title {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+.panel-desc {
+  color: var(--fla-text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 0;
+  max-width: 720px;
+  line-height: 1.6;
+}
+
+/* ---------------------------------------------------------
+   8. COLUMNA DERECHA — Tarjeta de control de pasos
+   --------------------------------------------------------- */
+.control-col {
+  position: sticky;
+  top: 1.5rem;
+}
+
+.control-card {
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.1rem 1.1rem 1.25rem;
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  color: #0f172a;
+}
+
+.control-header {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding-bottom: 0.85rem;
+  margin-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.control-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+.control-icon {
+  font-size: 1.15rem;
+  color: #475569;
+}
+
+/* Lista de pasos */
+.pasos-lista {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.paso-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  border-radius: 0.6rem;
+  background: #f8fafc;
+  color: #334155;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--fla-transition);
+}
+
+.paso-item:hover {
+  background: #eef2ff;
+  border-color: rgba(99, 102, 241, 0.4);
+  transform: translateX(2px);
+}
+
+.paso-item .paso-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+  transition: all var(--fla-transition);
+}
+
+.paso-item .paso-label {
+  flex: 1;
+  line-height: 1.2;
+}
+
+/* Estado ACTIVO (puede haber varios a la vez) */
+.paso-item.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-color: transparent;
+  color: #ffffff;
+  box-shadow: 0 8px 20px -8px rgba(16, 185, 129, 0.7);
+}
+
+.paso-item.active .paso-num {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   9. BOTONES GLOBALES (Activar / Desactivar todos)
+   --------------------------------------------------------- */
+.control-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all var(--fla-transition);
+}
+
+.action-btn.action-on {
+  color: #2563eb;
+  border-color: rgba(37, 99, 235, 0.35);
+}
+.action-btn.action-on:hover {
+  background: #eff6ff;
+  border-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+.action-btn.action-off {
+  color: #dc2626;
+  border-color: rgba(220, 38, 38, 0.35);
+}
+.action-btn.action-off:hover {
+  background: #fef2f2;
+  border-color: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------
+   10. BADGE FLOTANTE "Pasos Activos"
+   --------------------------------------------------------- */
+.pasos-activos-badge {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 50;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #ffffff;
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow:
+    0 12px 30px -10px rgba(16, 185, 129, 0.7),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  transition: all var(--fla-transition);
+  backdrop-filter: blur(12px);
+}
+
+.pasos-activos-badge strong {
+  font-weight: 800;
+  font-size: 1rem;
+  margin-left: 0.25rem;
+}
+
+.pasos-activos-badge:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 40px -10px rgba(16, 185, 129, 0.85),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+/* ---------------------------------------------------------
+   11. INFO CARDS (Paso 1)
+   --------------------------------------------------------- */
+.info-card {
+  padding: 1.25rem;
+  background: rgba(5, 8, 22, 0.6);
+  border: 1px solid var(--fla-border);
+  border-radius: 1rem;
+  height: 100%;
+  transition: all var(--fla-transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.info-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--fla-primary), var(--fla-accent));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--fla-transition);
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: var(--fla-shadow-glow);
+}
+.info-card:hover::before {
+  transform: scaleY(1);
+}
+
+.info-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.65rem;
+  display: block;
+}
+
+.info-card h4 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.code-block {
+  background: #020617;
+  color: #7dd3fc;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.6rem;
+  font-size: 0.72rem;
+  border: 1px solid rgba(6, 182, 212, 0.15);
+  overflow-x: auto;
+  margin: 0;
+}
+.code-block code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* ---------------------------------------------------------
+   12. NAVBAR (Paso 2)
+   --------------------------------------------------------- */
+.fla-navbar {
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.95),
+    rgba(30, 41, 59, 0.9)
+  ) !important;
+  border: 1px solid var(--fla-border);
+  padding: 0.75rem 1rem;
+  backdrop-filter: blur(12px);
+}
+
+.fla-navbar .navbar-brand {
+  color: #fff !important;
+  font-size: 1.2rem;
+}
+
+.fla-navbar .nav-link {
+  color: var(--fla-text-muted) !important;
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.9rem !important;
+  border-radius: 0.5rem;
+  transition: all var(--fla-transition);
+}
+
+.fla-navbar .nav-link:hover,
+.fla-navbar .nav-link.active {
+  color: #fff !important;
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.fla-dropdown {
+  background: rgba(15, 23, 42, 0.98);
+  border: 1px solid var(--fla-border);
+  border-radius: 0.75rem;
+  padding: 0.4rem;
+  backdrop-filter: blur(12px);
+}
+.fla-dropdown .dropdown-item {
+  color: var(--fla-text-muted);
+  border-radius: 0.4rem;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.75rem;
+  transition: all var(--fla-transition);
+}
+.fla-dropdown .dropdown-item:hover {
+  background: rgba(99, 102, 241, 0.15);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------
+   13. HERO INNER (Paso 3)
+   --------------------------------------------------------- */
+.fla-hero-inner {
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 45%, #ec4899 100%);
+  box-shadow:
+    0 25px 60px -20px rgba(99, 102, 241, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  animation: heroGlow 6s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 25px 60px -20px rgba(99, 102, 241, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  }
+  50% {
+    box-shadow:
+      0 25px 70px -15px rgba(236, 72, 153, 0.7),
+      0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  }
+}
+
+.fla-hero-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(255, 255, 255, 0.2),
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(255, 255, 255, 0.15),
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.fla-hero-inner::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 2px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  top: -60px;
+  right: -60px;
+  animation: rotateSlow 20s linear infinite;
+}
+
+@keyframes rotateSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.fla-hero-inner .display-4 {
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  line-height: 1.1;
+}
+
+.fla-badge {
+  background: rgba(251, 191, 36, 0.15) !important;
+  color: var(--fla-gold) !important;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  backdrop-filter: blur(8px);
+}
+
+/* ---------------------------------------------------------
+   14. BOTONES PERSONALIZADOS
+   --------------------------------------------------------- */
+.fla-btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--fla-primary-dark),
+    var(--fla-accent)
+  );
+  color: #fff !important;
+  border: none;
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.65rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--fla-transition);
+  box-shadow: 0 8px 20px -8px rgba(99, 102, 241, 0.6);
+}
+.fla-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px rgba(236, 72, 153, 0.7);
+}
+.fla-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+.fla-btn-primary:hover::before {
+  transform: translateX(100%);
+}
+
+.fla-btn-ghost {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.65rem 1.5rem;
+  backdrop-filter: blur(8px);
+  transition: all var(--fla-transition);
+}
+.fla-btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------
+   15. TARJETAS DE JUGADORES (Paso 4)
+   --------------------------------------------------------- */
+.fla-player-card {
+  position: relative;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--fla-border);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.fla-player-card:hover {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow:
+    0 25px 50px -20px rgba(99, 102, 241, 0.5),
+    0 0 0 1px rgba(99, 102, 241, 0.2) inset;
+}
+
+.fla-player-card.featured {
+  border-color: rgba(251, 191, 36, 0.5);
+  background: linear-gradient(
+    160deg,
+    rgba(251, 191, 36, 0.08),
+    rgba(15, 23, 42, 0.8)
+  );
+  box-shadow: 0 0 40px -10px rgba(251, 191, 36, 0.3);
+}
+
+.fla-player-card.featured::before {
+  content: "👑 GOAT";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #000;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  padding: 4px 10px;
+  border-radius: 999px;
+  z-index: 3;
+}
+
+.player-flag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 1.6rem;
+  z-index: 3;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.5));
+}
+
+.player-photo {
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.player-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 120%,
+    rgba(255, 255, 255, 0.2),
+    transparent 60%
+  );
+}
+
+.player-body {
+  padding: 1.15rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-name {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 0.15rem;
+}
+
+.player-years {
+  font-size: 0.75rem;
+  color: var(--fla-text-muted);
+  margin-bottom: 0.7rem;
+}
+
+.player-desc {
+  font-size: 0.82rem;
+  color: var(--fla-text);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.player-footer {
+  padding: 0.7rem 1.15rem;
+  border-top: 1px dashed var(--fla-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.76rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.player-footer .rating {
+  color: var(--fla-gold);
+  font-weight: 700;
+}
+.player-footer .rank {
+  color: var(--fla-text-muted);
+  font-weight: 500;
+}
+
+/* ---------------------------------------------------------
+   16. FORMULARIO (Paso 5)
+   --------------------------------------------------------- */
+.fla-form .form-label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--fla-text);
+  margin-bottom: 0.4rem;
+}
+
+.fla-form .form-control,
+.fla-form .form-select {
+  background: rgba(5, 8, 22, 0.6);
+  border: 1px solid var(--fla-border);
+  color: #fff;
+  border-radius: 0.75rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+  transition: all var(--fla-transition);
+}
+
+.fla-form .form-control::placeholder {
+  color: rgba(148, 163, 184, 0.5);
+}
+
+.fla-form .form-control:focus,
+.fla-form .form-select:focus {
+  background: rgba(5, 8, 22, 0.85);
+  border-color: var(--fla-primary);
+  color: #fff;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.fla-form .form-control.is-invalid,
+.fla-form .form-select.is-invalid {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.12);
+}
+
+.fla-form .form-control.is-valid,
+.fla-form .form-select.is-valid {
+  border-color: var(--fla-success);
+  background-image: none;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+}
+
+.fla-form .form-check-input {
+  background-color: rgba(5, 8, 22, 0.6);
+  border-color: var(--fla-border);
+}
+.fla-form .form-check-input:checked {
+  background-color: var(--fla-primary);
+  border-color: var(--fla-primary);
+}
+.fla-form .form-check-label {
+  color: var(--fla-text);
+  font-size: 0.88rem;
+  margin-left: 0.4rem;
+}
+.fla-form .form-text {
+  color: var(--fla-text-muted);
+  font-size: 0.75rem;
+}
+
+.invalid-feedback {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #fca5a5;
+}
+
+/* Alertas */
+.fla-alert {
+  background: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #67e8f9;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.85rem;
+}
+
+.fla-alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #6ee7b7;
+  border-radius: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.9rem;
+  animation: successPop 0.5s ease;
+}
+
+@keyframes successPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ---------------------------------------------------------
+   17. TILT 3D
+   --------------------------------------------------------- */
+.tilt-card {
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.4s ease;
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------
+   18. UTILIDADES TAILWIND DE RESPALDO
+   --------------------------------------------------------- */
+.tw-text-balance {
+  text-wrap: balance;
+}
+.tw-max-w-3xl {
+  max-width: 48rem;
+}
+.tw-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.tw-shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ---------------------------------------------------------
+   19. ACCESIBILIDAD
+   --------------------------------------------------------- */
+:focus-visible {
+  outline: 3px solid var(--fla-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--fla-primary);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--fla-bg-900);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--fla-primary), var(--fla-accent));
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--fla-accent), var(--fla-gold));
+}
+
+/* ---------------------------------------------------------
+   20. RESPONSIVE
+   --------------------------------------------------------- */
+@media (max-width: 768px) {
+  .paso-item {
+    font-size: 0.82rem;
+    padding: 0.55rem 0.7rem;
+  }
+  .paso-item .paso-num {
+    width: 22px;
+    height: 22px;
+    font-size: 0.72rem;
+  }
+
+  .panel-panel {
+    padding: 1.25rem;
+  }
+  .panel-title {
+    font-size: 1.15rem;
+  }
+
+  .fla-hero-inner {
+    padding: 2rem 1.25rem;
+    min-height: 260px;
+  }
+  .fla-hero-inner .display-4 {
+    font-size: 1.5rem;
+  }
+
+  .player-photo {
+    height: 110px;
+    font-size: 3rem;
+  }
+
+  .pasos-activos-badge {
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    font-size: 0.78rem;
+  }
+  .pasos-activos-badge:hover {
+    transform: translateX(-50%) translateY(-2px);
+  }
+}
+
+/* ---------------------------------------------------------
+   21. MOVIMIENTO REDUCIDO
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .bg-orb,
+  #particles-canvas {
+    display: none;
+  }
+}

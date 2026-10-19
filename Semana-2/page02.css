@@ -1,0 +1,171 @@
+/* ============================================ */
+/* RESET Y ESTILOS BASE                         */
+/* ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1a1a1a;
+  padding: 32px 16px;
+}
+
+/* ============================================ */
+/* CONTENEDOR PRINCIPAL                         */
+/* ============================================ */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ============================================ */
+/* SECCIONES                                    */
+/* ============================================ */
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+/* ============================================ */
+/* CONTENEDOR DE CARDS (Flexbox)                */
+/* ============================================ */
+.cards-container {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+  justify-content: flex-end;
+}
+
+/* Gap específico por sección (según requerimiento original) */
+.cards-playas {
+  gap: 10px;
+}
+
+.cards-ciudades {
+  gap: 5px;
+}
+
+/* ============================================ */
+/* CARD                                         */
+/* ============================================ */
+.card {
+  width: 320px;
+  height: 260px;
+  background-color: #2d2d2d;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* Imagen de fondo de la card */
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-img {
+  opacity: 0.4;
+}
+
+/* Overlay con la información */
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #ffffff;
+}
+
+/* ============================================ */
+/* INFORMACIÓN DENTRO DE LA CARD                */
+/* ============================================ */
+.card-info {
+  margin-top: auto;
+}
+
+.card-number {
+  font-size: 0.875rem;
+  color: #d1d5db;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.card-location {
+  font-size: 0.875rem;
+  color: #d1d5db;
+  line-height: 1.2;
+}
+
+/* ============================================ */
+/* ACCIONES / BOTONES                           */
+/* ============================================ */
+.card-actions {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(75, 85, 99, 0.5);
+  display: flex;
+  gap: 24px;
+}
+
+/* Botones genéricos (Share, Explore, Full Report) */
+.btn {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #eab308; /* amarillo */
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+  padding: 0;
+  font-family: inherit;
+}
+
+/* Hover: cambia a gris más claro */
+.btn:hover {
+  color: #d1d5db;
+}
+
+/* ============================================ */
+/* RESPONSIVE (opcional, para pantallas chicas) */
+/* ============================================ */
+@media (max-width: 700px) {
+  .card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .cards-container {
+    justify-content: center;
+  }
+}
